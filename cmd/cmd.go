@@ -157,7 +157,7 @@ func (c *Cmd) executor(input string) {
 			logger.LogError("Ошибка завершения работы по команде: " + input + "\n" + err.Error())
 			c.printErr(err)
 		}
-		logger.LogInfo("Достаточно на сегодня развлечений")
+		logger.LogInfo("Выход из программы")
 		err = logger.CloseFile()
 		if err != nil {
 			logger.LogError("Ошибка закрытия файла журналирования\n" + err.Error())
@@ -187,7 +187,7 @@ func (c *Cmd) completer(d prompt.Document) []prompt.Suggest {
 
 func (c *Cmd) Run() {
 	c.logging(LogTypeInfo, "App starting")
-	logger.LogInfo("СТАРТУЕМ")
+	logger.LogInfo("Запуск консоли")
 	go func() {
 		for msg := range c.calendar.Notification {
 			c.printOutMsg(LogTypeInfo, fmt.Sprintln(NotifMsgTitle, msg))
